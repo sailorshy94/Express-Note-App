@@ -3,8 +3,10 @@ const express = require('express');
 const morgan = require('morgan');
 // used to send data to dir
 const fs = require('fs');
+// allows to work w/ views dir
+const path = require('path');
 // nanoid package to generate random id
-// const nanoid = require('nanoid');
+// const { nanoid } = require('nanoid');
 
 // runs specific check for router # using nullish coalescence operator; will use for Heroku deployment
 const PORT = process.env.PORT ?? 3001;
@@ -19,7 +21,7 @@ app.use(morgan('dev'));
 // GET /notes returns the notes.html file
 // HTML route
 app.get('/notes', (req, res) =>{
-
+    res.sendFile(path.join(__dirname, 'views/notes.html'));
 });
 
 // reads db.json file and returns saved notes as JSON
