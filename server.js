@@ -26,6 +26,8 @@ app.get('/api/notes', (req, res) => {
 
 // will receive new note, save on req body, add to db.json file, and return new note to user
 // TODO: add npm package that will give each note unique id when saved
+// possible npm packages?? - uuid
+// npm install uuid
 app.post('/api/notes', (req, res) => {
 
 });
