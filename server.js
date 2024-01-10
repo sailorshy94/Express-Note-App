@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 // used to send data to dir
 const fs = require('fs');
+// nanoid package to generate random id
+// const nanoid = require('nanoid');
 
 // runs specific check for router # using nullish coalescence operator; will use for Heroku deployment
 const PORT = process.env.PORT ?? 3001;
@@ -27,8 +29,7 @@ app.get('/api/notes', (req, res) => {
 
 // will receive new note, save on req body, add to db.json file, and return new note to user
 // TODO: add npm package that will give each note unique id when saved
-// possible npm packages?? - uuid
-// npm install uuid
+// npm package - nanoid(10); - gen random id w 10 chars
 app.post('/api/notes', (req, res) => {
 
 });
@@ -40,4 +41,6 @@ app.get('*', (req, res) => {
 });
 
 // will listen for connections to PORT
-app.listen();
+app.listen(PORT, () => {
+    console.log(`running at http://localhost:${PORT}`);
+});
