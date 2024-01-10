@@ -15,6 +15,7 @@ app.use(morgan('dev'));
 
 // TODO: 
 // GET /notes returns the notes.html file
+// HTML route
 app.get('/notes', (req, res) =>{
 
 });
@@ -33,6 +34,7 @@ app.post('/api/notes', (req, res) => {
 });
 
 // will redirect to html file
+// HTML route
 app.get('*', (req, res) => {
 
 });
