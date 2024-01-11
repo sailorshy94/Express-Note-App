@@ -17,6 +17,7 @@ app.use(express.json());
 
 // TODO: add middleware
 
+
 // allows us to see requests made on server locally
 app.use(morgan('dev'));
 
@@ -54,7 +55,7 @@ app.post('/api/notes', (req, res) => {
     console.log({...req.body, id: nanoid(10)});
     // will write to the db json file 
     fs.writeFileSync('db/db.json', notesStr);
-    res.json(req.body);
+    res.json({...req.body, id: nanoid(10)});
 });
 
 
