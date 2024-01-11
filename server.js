@@ -40,8 +40,8 @@ app.post('/api/notes', (req, res) => {
 // will redirect to html file - the homepage
 // HTML route
 app.get('*', (req, res) => {
-    // res.sendFile(path.join(__dirname, 'views/index.html'));
-    res.send('This is the Note App homepage.');
+    res.sendFile(path.join(__dirname, 'views/index.html'));
+    // res.send('This is the Note App homepage.');
 });
 
 // will listen for connections to PORT
