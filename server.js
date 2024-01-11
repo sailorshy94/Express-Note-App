@@ -48,8 +48,8 @@ app.post('/api/notes', (req, res) => {
     const notes = data ? JSON.parse(data) : [];
     // takes new notes and adds them to the array
     notes.push(req.body);
-    // will write the db json file 
-    // fs.writeFileSync();
+    // will write to the db json file 
+    fs.writeFileSync('db/db.json', 'utf-8');
     res.json(req.body);
 });
 
