@@ -21,8 +21,8 @@ app.use(morgan('dev'));
 // GET /notes returns the notes.html file
 // HTML route
 app.get('/notes', (req, res) =>{
-    // res.sendFile(path.join(__dirname, 'views/notes.html'));
-    res.send('This is the notes route');
+    res.sendFile(path.join(__dirname, 'views/notes.html'));
+    // res.send('This is the notes route');
 });
 
 // reads db.json file and returns saved notes as JSON
@@ -37,10 +37,11 @@ app.post('/api/notes', (req, res) => {
 
 });
 
-// will redirect to html file
+// will redirect to html file - the homepage
 // HTML route
 app.get('*', (req, res) => {
-
+    // res.sendFile(path.join(__dirname, 'views/index.html'));
+    res.send('This is the Note App homepage.');
 });
 
 // will listen for connections to PORT
