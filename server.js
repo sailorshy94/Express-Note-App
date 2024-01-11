@@ -46,10 +46,12 @@ app.post('/api/notes', (req, res) => {
    const data = fs.readFileSync('db/db.json', 'utf-8');
     // catch the added notes - needs to default to empty array if no data
     const notes = data ? JSON.parse(data) : [];
+    // properly formats the notes JSON obj into a string
+    const notesStr = JSON.stringify(notes, null, 2);
     // takes new notes and adds them to the array
     notes.push(req.body);
     // will write to the db json file 
-    fs.writeFileSync('db/db.json', 'utf-8');
+    fs.writeFileSync('db/db.json', notesStr);
     res.json(req.body);
 });
 
