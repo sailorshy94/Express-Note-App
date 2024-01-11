@@ -30,6 +30,8 @@ app.get('/notes', (req, res) =>{
 // reads db.json file and returns saved notes as JSON
 // can think of structure like an event listener
 app.get('/api/notes', (req, res) => {
+    // set db file json to const variable data
+    const data = fs.readFileSync('db/db.json', 'utf-8');
     res.json([]);
 });
 
