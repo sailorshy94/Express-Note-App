@@ -6,7 +6,7 @@ const fs = require('fs');
 // allows to work w/ views dir
 const path = require('path');
 // nanoid package to generate random id
-// const { nanoid } = require('nanoid');
+const { nanoid } = require('nanoid');
 
 // runs specific check for router # using nullish coalescence operator; will use for Heroku deployment
 const PORT = process.env.PORT ?? 3001;
@@ -17,10 +17,9 @@ app.use(express.json());
 // allows us to see requests made on server locally
 app.use(morgan('dev'));
 
-// TODO: 
 // GET /notes returns the notes.html file
 // HTML route
-app.get('/notes', (req, res) =>{
+app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'views/notes.html'));
 });
 
@@ -43,16 +42,20 @@ app.get('/api/notes', (req, res) => {
 // TODO: add npm package that will give each note unique id when saved
 // npm package - nanoid(10); - gen random id w 10 chars
 app.post('/api/notes', (req, res) => {
-   const data = fs.readFileSync('db/db.json', 'utf-8');
+    const data = fs.readFileSync('db/db.json', 'utf-8');
     // catch the added notes - needs to default to empty array if no data
     const notes = data ? JSON.parse(data) : [];
     // properly formats the notes JSON obj into a string
     const notesStr = JSON.stringify(notes, null, 2);
+    // variable for id generate by nanoid
+    // const uniqueId = nanoid(10);
     // takes new notes and adds them to the array
     notes.push(req.body);
     // will write to the db json file 
     fs.writeFileSync('db/db.json', notesStr);
     res.json(req.body);
+    // msg to verify nanoid functionality
+    // return `Unique id is: ${uniqueId}`;
 });
 
 
