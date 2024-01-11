@@ -32,7 +32,11 @@ app.get('/notes', (req, res) =>{
 app.get('/api/notes', (req, res) => {
     // set db file json to const variable data
     const data = fs.readFileSync('db/db.json', 'utf-8');
-    res.json([]);
+    // catches notes, if no data then defaults to empty array
+    const notes = data ? JSON.parse(data) : [];
+    // returns the notes array
+    res.json(notes);
+    console.log(notes);
 });
 
 // will receive new note, save on req body, add to db.json file, and return new note to user
