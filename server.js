@@ -14,6 +14,9 @@ const app = express();
 
 // allows acceptance of json data (notes)
 app.use(express.json());
+
+// TODO: add middleware
+
 // allows us to see requests made on server locally
 app.use(morgan('dev'));
 
@@ -47,15 +50,11 @@ app.post('/api/notes', (req, res) => {
     const notes = data ? JSON.parse(data) : [];
     // properly formats the notes JSON obj into a string
     const notesStr = JSON.stringify(notes, null, 2);
-    // variable for id generate by nanoid
-    // const uniqueId = nanoid(10);
-    // takes new notes and adds them to the array
-    notes.push(req.body);
+    // takes new notes and adds them to the array, spread expands array - allows us to copy and add to it, applies nanoid
+    notes.push({...req.body, id: nanoid(10)});
     // will write to the db json file 
     fs.writeFileSync('db/db.json', notesStr);
     res.json(req.body);
-    // msg to verify nanoid functionality
-    // return `Unique id is: ${uniqueId}`;
 });
 
 
