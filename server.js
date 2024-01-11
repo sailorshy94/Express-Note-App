@@ -28,15 +28,21 @@ app.get('/notes', (req, res) =>{
 
 // API ROUTES
 // reads db.json file and returns saved notes as JSON
+// can think of structure like an event listener
 app.get('/api/notes', (req, res) => {
-    res.json();
+    res.json([]);
 });
 
 // will receive new note, save on req body, add to db.json file, and return new note to user
 // TODO: add npm package that will give each note unique id when saved
 // npm package - nanoid(10); - gen random id w 10 chars
 app.post('/api/notes', (req, res) => {
-    res.json();
+    // const data = ;
+    // // catch the added notes - needs to default to empty array if no data
+    // const notes = ;
+    // // will write the db json file 
+    // fs.writeFileSync();
+    // res.json([]);
 });
 
 // =================================================================================================
