@@ -50,8 +50,9 @@ app.post('/api/notes', (req, res) => {
     notes.push(req.body);
     // will write the db json file 
     // fs.writeFileSync();
-    res.json([]);
+    res.json(req.body);
 });
+
 
 // =================================================================================================
 // will redirect to html file - the homepage - always goes below
