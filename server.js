@@ -22,29 +22,31 @@ app.use(morgan('dev'));
 // HTML route
 app.get('/notes', (req, res) =>{
     res.sendFile(path.join(__dirname, 'views/notes.html'));
-    // res.send('This is the notes route');
 });
 
+// =================================================================================================
+
+// API ROUTES
 // reads db.json file and returns saved notes as JSON
 app.get('/api/notes', (req, res) => {
-
+    res.json();
 });
 
 // will receive new note, save on req body, add to db.json file, and return new note to user
 // TODO: add npm package that will give each note unique id when saved
 // npm package - nanoid(10); - gen random id w 10 chars
 app.post('/api/notes', (req, res) => {
-
+    res.json();
 });
 
-// will redirect to html file - the homepage
+// =================================================================================================
+// will redirect to html file - the homepage - always goes below
 // HTML route
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'views/index.html'));
-    // res.send('This is the Note App homepage.');
 });
 
-// will listen for connections to PORT
+// will listen for connections to PORT - goes at bottom
 app.listen(PORT, () => {
     console.log(`running at http://localhost:${PORT}`);
 });
