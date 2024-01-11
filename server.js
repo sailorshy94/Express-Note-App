@@ -21,7 +21,8 @@ app.use(morgan('dev'));
 // GET /notes returns the notes.html file
 // HTML route
 app.get('/notes', (req, res) =>{
-    res.sendFile(path.join(__dirname, 'views/notes.html'));
+    // res.sendFile(path.join(__dirname, 'views/notes.html'));
+    res.send('This is the notes route');
 });
 
 // reads db.json file and returns saved notes as JSON
