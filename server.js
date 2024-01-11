@@ -32,23 +32,25 @@ app.get('/notes', (req, res) =>{
 app.get('/api/notes', (req, res) => {
     // set db file json to const variable data
     const data = fs.readFileSync('db/db.json', 'utf-8');
-    // catches notes, if no data then defaults to empty array
+    // grabs the notes array, if no data then defaults to empty array
     const notes = data ? JSON.parse(data) : [];
     // returns the notes array
     res.json(notes);
-    console.log(notes);
+    // console.log(notes);
 });
 
 // will receive new note, save on req body, add to db.json file, and return new note to user
 // TODO: add npm package that will give each note unique id when saved
 // npm package - nanoid(10); - gen random id w 10 chars
 app.post('/api/notes', (req, res) => {
-    // const data = ;
-    // // catch the added notes - needs to default to empty array if no data
-    // const notes = ;
-    // // will write the db json file 
+   const data = fs.readFileSync('db/db.json', 'utf-8');
+    // catch the added notes - needs to default to empty array if no data
+    const notes = data ? JSON.parse(data) : [];
+    // takes new notes and adds them to the array
+    notes.push(req.body);
+    // will write the db json file 
     // fs.writeFileSync();
-    // res.json([]);
+    res.json([]);
 });
 
 // =================================================================================================
