@@ -38,7 +38,6 @@ app.get('/api/notes', (req, res) => {
     const notes = data ? JSON.parse(data) : [];
     // returns the notes array
     res.json(notes);
-    // console.log(notes);
 });
 
 // will receive new note, save on req body, add to db.json file, and return new note to user
@@ -52,6 +51,7 @@ app.post('/api/notes', (req, res) => {
     const notesStr = JSON.stringify(notes, null, 2);
     // takes new notes and adds them to the array, spread expands array - allows us to copy and add to it, applies nanoid
     notes.push({...req.body, id: nanoid(10)});
+    console.log({...req.body, id: nanoid(10)});
     // will write to the db json file 
     fs.writeFileSync('db/db.json', notesStr);
     res.json(req.body);
