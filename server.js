@@ -55,8 +55,8 @@ app.post('/api/notes', (req, res) => {
      // properly formats the notes JSON obj into a string
     const notesStr = JSON.stringify(notes, null, 2);
     // will write to the db json file 
-    fs.writeFileSync('./db/db.json', notesStr);
-    // res.json(req.body);
+    fs.writeFileSync('db/db.json', notesStr);
+    res.json(req.body);
 });
 
 
