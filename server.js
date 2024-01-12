@@ -16,6 +16,8 @@ const app = express();
 app.use(express.json());
 
 // TODO: add middleware
+// allows to serve files from public dir - ie JS
+app.use(express.static('public'));
 
 
 // allows us to see requests made on server locally
