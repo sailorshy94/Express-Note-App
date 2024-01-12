@@ -14,4 +14,3 @@ This application uses Nano ID version 3.x created by Andrey Sitnik.
 
 ## Links
 [Application Link](https://damp-scrubland-88163-b13d83f88140.herokuapp.com/)  
-[GitHub Repo Link](https://github.com/sailorshy94/Express-Note-App)
