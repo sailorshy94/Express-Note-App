@@ -15,7 +15,7 @@ const app = express();
 // allows acceptance of json data (notes)
 app.use(express.json());
 
-// TODO: add middleware
+// middleware
 app.use(express.urlencoded({extended: true }));
 // allows to serve files from public dir - ie JS
 app.use(express.static('public'));
