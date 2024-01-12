@@ -16,9 +16,9 @@ const app = express();
 app.use(express.json());
 
 // TODO: add middleware
+app.use(express.urlencoded({extended: true }));
 // allows to serve files from public dir - ie JS
 app.use(express.static('public'));
-
 
 // allows us to see requests made on server locally
 app.use(morgan('dev'));
@@ -44,20 +44,19 @@ app.get('/api/notes', (req, res) => {
 });
 
 // will receive new note, save on req body, add to db.json file, and return new note to user
-// TODO: add npm package that will give each note unique id when saved
 // npm package - nanoid(10); - gen random id w 10 chars
 app.post('/api/notes', (req, res) => {
     const data = fs.readFileSync('db/db.json', 'utf-8');
     // catch the added notes - needs to default to empty array if no data
     const notes = data ? JSON.parse(data) : [];
-    // properly formats the notes JSON obj into a string
-    const notesStr = JSON.stringify(notes, null, 2);
     // takes new notes and adds them to the array, spread expands array - allows us to copy and add to it, applies nanoid
     notes.push({...req.body, id: nanoid(10)});
     console.log({...req.body, id: nanoid(10)});
+     // properly formats the notes JSON obj into a string
+    const notesStr = JSON.stringify(notes, null, 2);
     // will write to the db json file 
-    fs.writeFileSync('db/db.json', notesStr);
-    res.json({...req.body, id: nanoid(10)});
+    fs.writeFileSync('./db/db.json', notesStr);
+    // res.json(req.body);
 });
 
 
